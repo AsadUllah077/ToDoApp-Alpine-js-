@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics of Alpine JS</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="alpine.js"></script>
+  </head>
+  <body>
+    <!-- <div
+      x-data="{message:'click on message',
+         change(){
+        this.message = 'You clicked me!';
+    }
+}"
+    >
+      <button x-text="message" @click="change()"></button>
+    </div> -->
+    <div x-data="dropdown">
+        <button  @click="toggle()">open/close</button>
+    <div x-show="open">Hello, World!</div>
+    <div x-data="dropdown">
+        <button  @click="toggle()">open/close</button>
+    <div x-show="open">Hello, World!</div>
+    </div>
+    <div x-data x-text="$store.users.posts"></div>
+
+    <button x-data="{id:''}" :id="id" @click="id=Math.round(Math.random()*10)">click</button>
+  
+    <div x-data="{ colors: ['red', 'green', 'blue'] }">
+        <template x-for="color in colors" :key="color">
+            <div class="w-10 h-10" :class="`bg-${color}-500`"></div>
+        </template>
+    </div>
+    <div x-data="{ first: '', second: '', third: '' }">
+      <input type="text" x-model="first" class="border-gray-300">
+      <input type="text" x-model="second" class="border-gray-300">
+      <input type="text" x-model="third" class="border-gray-300">
+      <!-- Use conditional logic for dynamic class binding -->
+      <button 
+          x-text="first" 
+          :id="third" 
+          class="text-2xl" 
+          :class="second ? `bg-${second}-500` : ''">
+      </button>
+  </div>
+    
+
+  </body>
+</html>
